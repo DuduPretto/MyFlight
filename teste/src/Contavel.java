@@ -1,0 +1,3 @@
+interface Contavel{
+    int qtdObjetos();
+  }

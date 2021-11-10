@@ -69,6 +69,14 @@ Geo coordGuarulhos = new Geo(-23.413, -46.4445);
   System.out.println(rotas.toString());
 
   System.out.println(aeroportos.toString());
+
+  VooVariasEscalas testeEscalas = new VooVariasEscalas(datahora1, duracao1, rota1);
+  testeEscalas.addEscala(rota1);
+  testeEscalas.addEscala(rota2);
+  testeEscalas.addEscala(rota1);
+
+  System.out.println("alo");
+  System.out.println(testeEscalas.toString());
 /*
   System.out.println("\f");
   System.out.println(aviao1);

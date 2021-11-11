@@ -7,27 +7,29 @@ class Main {
 
 Geo coordSalgadoFilho = new Geo(-29.9935, -51.1754);
 Geo coordGuarulhos = new Geo(-23.413, -46.4445);
+Geo coordHeathrow = new Geo(51.47060013, -0.461941004);
 
   Aeronave aviao1 = new Aeronave ("111", "Airbus A330", 200);
   Aeronave aviao2 = new Aeronave ("222", "Boeing 747-8", 150);
 
   Aeroporto salgadoFilho = new Aeroporto ("POA","Salgado Filho", coordSalgadoFilho);
   Aeroporto guarulhos = new Aeroporto ("GRU", "Guarulhos", coordGuarulhos);
+  Aeroporto Heathrow = new Aeroporto ("LHR", "Heathrow", coordHeathrow);
 
   CiaAerea gol = new CiaAerea ("G3","Gol");
   CiaAerea latam = new CiaAerea ("JJ456", "LATAM");
 
   Rota rota1 = new Rota (gol, salgadoFilho, guarulhos, aviao1);
   Rota rota2 = new Rota (latam, guarulhos, salgadoFilho, aviao2);
+  Rota rota3 = new Rota (latam, guarulhos, Heathrow, aviao2);
+
 
   LocalDateTime datahora1 = LocalDateTime.of(2021, 8, 20, 14, 30);
   LocalDateTime datahora2 = LocalDateTime.of(2021, 9, 23, 15, 24);
-  Duration duracao1 = Duration.ofMinutes(120);
-  Duration duracao2 = Duration.ofMinutes(240);
 
-  Voo voo1 = new Voo (datahora1, duracao1, rota1);
-  Voo voo2 = new Voo (datahora2, duracao2, rota2);
-  Voo voo3 = new Voo (duracao2, rota2);
+  Voo voo1 = new VooDireto (rota1, datahora1);
+  Voo voo2 = new VooDireto (rota2, datahora2);
+  Voo voo3 = new VooDireto (rota3, datahora2);
 
 
   GerenciadorAeroportos aeroportos = new GerenciadorAeroportos();
@@ -49,7 +51,6 @@ Geo coordGuarulhos = new Geo(-23.413, -46.4445);
   GerenciadorVoos voos = new GerenciadorVoos();
   voos.inserir(voo1);
   voos.inserir(voo2);
-  voos.inserir(voo3);
 
   System.out.println(aeroportos.toString());
   String pesquisa = "POA";
@@ -61,7 +62,7 @@ Geo coordGuarulhos = new Geo(-23.413, -46.4445);
   System.out.println(rotas.toString());
   System.out.println(voos.toString());
 
-  System.out.println("\nDistancia entre GRU e POA: "+ Geo.distancia(coordGuarulhos, coordSalgadoFilho));//falta terminar o ex 2 do MyFlight03
+  System.out.println("\nDistancia entre GRU e POA: "+ Geo.distancia(coordGuarulhos, coordSalgadoFilho));
   
 
   rotas.ordenaNomeCia();
@@ -70,13 +71,16 @@ Geo coordGuarulhos = new Geo(-23.413, -46.4445);
 
   System.out.println(aeroportos.toString());
 
-  VooVariasEscalas testeEscalas = new VooVariasEscalas(datahora1, duracao1, rota1);
+  VooEscalas testeEscalas = new VooEscalas(datahora1);
   testeEscalas.addEscala(rota1);
   testeEscalas.addEscala(rota2);
-  testeEscalas.addEscala(rota1);
+  testeEscalas.addEscala(rota3);
 
-  System.out.println("alo");
   System.out.println(testeEscalas.toString());
+
+  System.out.println("\n\n\n"+voo3.toString()); 
+
+
 /*
   System.out.println("\f");
   System.out.println(aviao1);
@@ -91,7 +95,6 @@ Geo coordGuarulhos = new Geo(-23.413, -46.4445);
   System.out.println(voo2);
   System.out.println(voo3);
 */
- 
 
 }
 }

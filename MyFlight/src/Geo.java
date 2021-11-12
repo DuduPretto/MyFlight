@@ -1,4 +1,4 @@
-public class Geo { //falta terminar o ex 2 do MyFlight03
+public class Geo {
         private double latitude;
         private double longitude;
      

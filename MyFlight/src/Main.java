@@ -54,7 +54,7 @@ Geo coordHeathrow = new Geo(51.47060013, -0.461941004);
 
   System.out.println(aeroportos.toString());
   String pesquisa = "POA";
-  Aeroporto teste = aeroportos.pesquisar(pesquisa);
+  Aeroporto teste = aeroportos.pesquisarCodigo(pesquisa);
   System.out.println(teste);
 
   System.out.println(aeronaves.toString());
@@ -96,6 +96,30 @@ Geo coordHeathrow = new Geo(51.47060013, -0.461941004);
   System.out.println(voo3);
 */
 
+GerenciadorCias gerenCia;
+gerenCia = GerenciadorCias.getInstance();
+gerenCia.readFile("airlines.dat 9.49.32 PM");
+System.out.println("");
+System.out.println(gerenCia.relatorio());
+
+// GerenciadorAeronaves gerenAeron;
+// gerenAeron = GerenciadorAeronaves.getInstance();
+// gerenAeron.readFile("equipment.dat 9.49.32 PM");
+// System.out.println("");
+// System.out.println(gerenAeron.relatorio());
+
+// GerenciadorAeroportos gerenAerop;
+// gerenAerop = GerenciadorAeroportos.getInstance();
+// gerenAerop.readFile("airports.dat 9.49.32 PM");
+// System.out.println("");
+// System.out.println(gerenAerop.relatorio());
+
+// GerenciadorRotas gerenRota;
+// gerenRota = GerenciadorRotas.getInstance();
+// gerenRota.readFile("routes.dat 9.49.32 PM", gerenCia, gerenAerop, gerenAeron);
+// System.out.println("");
+// System.out.println(gerenRota.relatorio());
+        
 }
 }
 
